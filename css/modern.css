@@ -1,0 +1,691 @@
+/* Modern CSS for VetLife */
+:root {
+    --primary-color: #008080;
+    /* Teal */
+    --secondary-color: #20B2AA;
+    /* Light Sea Green */
+    --accent-color: #e0f2f1;
+    /* Light Teal Background */
+    --text-color: #333;
+    --text-light: #666;
+    --white: #ffffff;
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --radius: 8px;
+    --transition: all 0.3s ease;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f4f6f8;
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Navbar */
+.navbar {
+    background-color: var(--white);
+    padding: 1rem 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: var(--shadow);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+.logo img {
+    height: 40px;
+    margin-right: 10px;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+.nav-links a {
+    color: var(--text-color);
+    font-weight: 500;
+    transition: var(--transition);
+}
+
+.nav-links a:hover {
+    color: var(--primary-color);
+}
+
+.btn-login {
+    background-color: var(--primary-color);
+    color: var(--white);
+    padding: 0.5rem 1.5rem;
+    border-radius: 20px;
+    transition: var(--transition);
+}
+
+.btn-login:hover {
+    background-color: #006666;
+}
+
+/* Hero Section */
+.hero {
+    background: linear-gradient(135deg, var(--accent-color) 0%, #ffffff 100%);
+    padding: 4rem 5%;
+    text-align: center;
+    min-height: 50vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    color: var(--text-light);
+    max-width: 600px;
+    margin-bottom: 2rem;
+}
+
+.search-container {
+    background: var(--white);
+    padding: 1rem;
+    border-radius: 50px;
+    box-shadow: var(--shadow);
+    display: flex;
+    width: 100%;
+    max-width: 500px;
+}
+
+.search-container input {
+    flex: 1;
+    border: none;
+    outline: none;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+}
+
+.search-container button {
+    background-color: var(--primary-color);
+    color: var(--white);
+    border: none;
+    padding: 0.5rem 2rem;
+    border-radius: 30px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: var(--transition);
+}
+
+.search-container button:hover {
+    background-color: #006666;
+}
+
+/* Section Common */
+.section-title {
+    text-align: center;
+    font-size: 2rem;
+    color: var(--primary-color);
+    margin: 3rem 0 1.5rem;
+}
+
+/* Veterinarians */
+.vets-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    padding: 2rem 5%;
+}
+
+.vet-card {
+    background: var(--white);
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    text-align: center;
+    transition: var(--transition);
+}
+
+.vet-card:hover {
+    transform: translateY(-5px);
+}
+
+.vet-card img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+}
+
+.vet-info {
+    padding: 1.5rem;
+}
+
+.vet-info h3 {
+    color: var(--text-color);
+    margin-bottom: 0.5rem;
+}
+
+.vet-info p {
+    color: var(--text-light);
+    font-size: 0.9rem;
+}
+
+/* Animals List (Legacy) */
+#resultados {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    padding: 2rem 5%;
+}
+
+.caixaAnimal {
+    background: var(--white);
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+}
+
+.caixaAnimal:hover {
+    transform: translateY(-5px);
+}
+
+.caixaAnimal img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.caixaAnimal div {
+    padding: 1rem;
+    text-align: center;
+}
+
+.caixaAnimal h1 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    color: var(--text-color);
+}
+
+.caixaAnimal p {
+    color: var(--primary-color);
+    font-weight: bold;
+}
+
+/* Auth Forms */
+.auth-container {
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+}
+
+.auth-box {
+    background: var(--white);
+    padding: 2rem;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+
+.auth-box h2 {
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--text-light);
+}
+
+.form-group input {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: var(--radius);
+    outline: none;
+}
+
+.form-group input:focus {
+    border-color: var(--primary-color);
+}
+
+.btn-submit {
+    width: 100%;
+    padding: 0.8rem;
+    background-color: var(--primary-color);
+    color: var(--white);
+    border: none;
+    border-radius: var(--radius);
+    cursor: pointer;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    transition: var(--transition);
+}
+
+.btn-submit:hover {
+    background-color: #006666;
+}
+
+.social-login {
+    margin-top: 1.5rem;
+    border-top: 1px solid #eee;
+    padding-top: 1.5rem;
+}
+
+.btn-social {
+    width: 100%;
+    padding: 0.8rem;
+    margin-bottom: 0.5rem;
+    border: none;
+    border-radius: var(--radius);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-weight: 500;
+}
+
+.btn-google {
+    background-color: #DB4437;
+    color: white;
+}
+
+.btn-facebook {
+    background-color: #4267B2;
+    color: white;
+}
+
+/* Floating WhatsApp */
+.whatsapp-float {
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    bottom: 40px;
+    right: 40px;
+    background-color: #25d366;
+    color: #FFF;
+    border-radius: 50px;
+    text-align: center;
+    font-size: 30px;
+    box-shadow: 2px 2px 3px #999;
+    z-index: 1000;
+    overflow: hidden;
+}
+
+.whatsapp-float img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Footer */
+footer {
+    background-color: #333;
+    color: var(--white);
+    text-align: center;
+    padding: 2rem;
+    margin-top: 4rem;
+}
+
+/* Responsiveness */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .nav-links {
+        gap: 1rem;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+
+    .hero h1 {
+        font-size: 2rem;
+    }
+}
+
+/* Pricing Section */
+.pricing-header {
+    text-align: center;
+    padding: 5rem 5% 3rem;
+    background: linear-gradient(135deg, var(--accent-color) 0%, #ffffff 100%);
+}
+
+.pricing-header h1 {
+    color: var(--primary-color);
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.pricing-header p {
+    color: var(--text-light);
+    font-size: 1.1rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.pricing-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2.5rem;
+    padding: 2rem 5% 5rem;
+    margin-top: -2rem;
+}
+
+.pricing-card {
+    background: var(--white);
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    padding: 2.5rem;
+    width: 320px;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    overflow: hidden;
+}
+
+.pricing-card:hover {
+    transform: translateY(-15px);
+    box-shadow: 0 20px 40px rgba(0, 128, 128, 0.15);
+}
+
+.pricing-card.featured {
+    transform: scale(1.05);
+    border: 2px solid var(--primary-color);
+    box-shadow: 0 15px 35px rgba(0, 128, 128, 0.1);
+    z-index: 10;
+}
+
+.pricing-card.featured:hover {
+    transform: scale(1.05) translateY(-15px);
+}
+
+/* Badge for featured plan */
+.pricing-card.featured::before {
+    content: "Mais Popular";
+    position: absolute;
+    top: 12px;
+    right: -32px;
+    background: var(--primary-color);
+    color: white;
+    padding: 5px 40px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    transform: rotate(45deg);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.pricing-card h3 {
+    color: var(--text-color);
+    font-size: 1.4rem;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+}
+
+.pricing-card>p {
+    color: var(--text-light);
+    font-size: 0.9rem;
+    min-height: 40px;
+}
+
+.pricing-card .price {
+    font-size: 3rem;
+    font-weight: 800;
+    color: var(--primary-color);
+    margin: 1.5rem 0;
+    display: flex;
+    align-items: baseline;
+}
+
+.pricing-card .price span {
+    font-size: 1rem;
+    color: var(--text-light);
+    font-weight: normal;
+    margin-left: 5px;
+}
+
+.pricing-features {
+    list-style: none;
+    margin: 1.5rem 0 2.5rem;
+    flex-grow: 1;
+}
+
+.pricing-features li {
+    margin-bottom: 1rem;
+    color: #555;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: flex-start;
+}
+
+.pricing-features li::before {
+    content: "✓";
+    color: var(--secondary-color);
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.btn-plan {
+    background-color: var(--white);
+    color: var(--primary-color);
+    text-align: center;
+    padding: 1rem;
+    border-radius: 50px;
+    font-weight: bold;
+    margin-top: auto;
+    border: 2px solid var(--primary-color);
+    transition: var(--transition);
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+}
+
+.btn-plan:hover {
+    background-color: var(--primary-color);
+    color: var(--white);
+    box-shadow: 0 5px 15px rgba(0, 128, 128, 0.3);
+}
+
+.pricing-card.featured .btn-plan {
+    background-color: var(--primary-color);
+    color: var(--white);
+}
+
+.pricing-card.featured .btn-plan:hover {
+    background-color: #006666;
+    border-color: #006666;
+}
+
+.modules-section {
+    padding: 5rem 5%;
+    background-color: #f8f9fa;
+    text-align: center;
+}
+
+.modules-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.module-card {
+    background: var(--white);
+    padding: 2rem;
+    border-radius: 16px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+    transition: var(--transition);
+    border-bottom: 4px solid transparent;
+}
+
+.module-card:hover {
+    transform: translateY(-5px);
+    border-bottom-color: var(--primary-color);
+}
+
+
+/* Checkout Section */
+.checkout-container {
+    padding: 3rem 5%;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.order-summary {
+    background: var(--white);
+    padding: 2rem;
+    border-radius: 16px;
+    box-shadow: var(--shadow);
+    width: 300px;
+    height: fit-content;
+}
+
+.order-summary h3 {
+    color: var(--primary-color);
+    border-bottom: 2px solid #eee;
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+}
+
+.payment-box {
+    background: var(--white);
+    padding: 2rem;
+    border-radius: 16px;
+    box-shadow: var(--shadow);
+    flex: 1;
+    max-width: 600px;
+}
+
+.payment-tabs {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid #ddd;
+}
+
+.tab-btn {
+    padding: 1rem 1.5rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--text-light);
+    border-bottom: 3px solid transparent;
+    transition: var(--transition);
+}
+
+.tab-btn:hover {
+    color: var(--primary-color);
+}
+
+.tab-btn.active {
+    color: var(--primary-color);
+    border-bottom: 3px solid var(--primary-color);
+    font-weight: bold;
+}
+
+.payment-content {
+    display: none;
+    animation: fadeIn 0.5s;
+}
+
+.payment-content.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Credit Card Form */
+.card-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+/* Pix */
+.pix-container {
+    text-align: center;
+    padding: 2rem 0;
+}
+
+.qr-placeholder {
+    width: 200px;
+    height: 200px;
+    background-color: #f0f0f0;
+    margin: 0 auto 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #999;
+    border: 2px dashed #ddd;
+    border-radius: var(--radius);
+}
+
+.copy-paste-code {
+    background: #f8f9fa;
+    padding: 1rem;
+    border-radius: var(--radius);
+    word-break: break-all;
+    font-family: monospace;
+    font-size: 0.9rem;
+    margin: 1rem 0;
+    border: 1px solid #eee;
+}
+
+/* Boleto */
+.boleto-info {
+    text-align: center;
+    padding: 2rem;
+}
