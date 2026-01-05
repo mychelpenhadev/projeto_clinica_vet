@@ -27,14 +27,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VetLife - Clínica Veterinária</title>
     <!-- Modern CSS -->
-    <link rel="stylesheet" href="css/modern.css">
+    <link rel="stylesheet" href="css/modern.css?v=3">
 </head>
 <body>
     <!-- Navbar -->
     <nav class="navbar">
         <div class="logo">
             <img src="images/vetlife_logo.png" alt="VetLife Logo">
-            VetLife
+            Vida Pet
         </div>
         <ul class="nav-links">
             <li><a href="index.php">Início</a></li>
@@ -95,30 +95,38 @@
     <!-- Animals Results Section -->
     <?php if($buscar): ?>
         <h2 class="section-title">Resultados da Busca</h2>
-        <section id="resultados">
-            <?php
-                if($buscar)
-                {
-                    $animalView = new AnimalView();
-                    if ($valor == "")
+        <div class="carousel-wrapper">
+            <button class="carousel-btn left">&#10094;</button>
+            <section id="resultados" class="carousel-container">
+                <?php
+                    if($buscar)
                     {
-                        $animalView->ExibirTodosAnimais();
+                        $animalView = new AnimalView();
+                        if ($valor == "")
+                        {
+                            $animalView->ExibirTodosAnimais();
+                        }
+                        else
+                        {
+                            $animalView->BuscarPeloNome($valor);
+                        }
                     }
-                    else
-                    {
-                        $animalView->BuscarPeloNome($valor);
-                    }
-                }
-            ?>       
-        </section>
+                ?>       
+            </section>
+            <button class="carousel-btn right">&#10095;</button>
+        </div>
     <?php else: ?>
         <h2 class="section-title">Nossos Pacientes</h2>
-        <section id="resultados">
-            <?php
-                $animalView = new AnimalView();
-                $animalView->ExibirTodosAnimais();
-            ?>
-        </section>
+        <div class="carousel-wrapper">
+            <button class="carousel-btn left">&#10094;</button>
+            <section id="resultados" class="carousel-container">
+                <?php
+                    $animalView = new AnimalView();
+                    $animalView->ExibirTodosAnimais();
+                ?>
+            </section>
+            <button class="carousel-btn right">&#10095;</button>
+        </div>
     <?php endif; ?>
 
     <!-- Extra Sections placeholder -->
@@ -143,5 +151,7 @@
     <footer>
         <p>&copy; 2026 VetLife Clínica Veterinária. Todos os direitos reservados.</p>
     </footer>
+    </footer>
+    <script src="js/carousel.js"></script>
 </body>
 </html>

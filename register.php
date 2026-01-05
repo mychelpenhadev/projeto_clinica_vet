@@ -31,14 +31,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro - VetLife</title>
+    <title>Cadastro - Vida Pet</title>
     <link rel="stylesheet" href="css/modern.css">
 </head>
 <body>
     <nav class="navbar">
         <div class="logo">
-            <img src="images/vetlife_logo.png" alt="VetLife Logo">
-            VetLife
+            <img src="images/vetlife_logo.png" alt="Vida Pet Logo">
+            Vida Pet
         </div>
         <ul class="nav-links">
             <li><a href="index.php">Início</a></li>

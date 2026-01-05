@@ -2,7 +2,7 @@
 session_start();
 require_once('config.php');
 
-// Check if user is logged in
+// Verificar se o usuário está logado
 $isLoggedIn = isset($_SESSION['user_id']);
 $userName = $isLoggedIn ? $_SESSION['user_name'] : '';
 $userRole = $isLoggedIn ? $_SESSION['user_role'] : '';
@@ -16,7 +16,7 @@ $planPrice = isset($_GET['price']) ? $_GET['price'] : '0,00';
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Checkout - VetLife</title>
+    <title>Checkout - Vida Pet</title>
     <link rel="stylesheet" href="css/modern.css">
     <script>
         function openTab(evt, tabName) {
@@ -37,8 +37,8 @@ $planPrice = isset($_GET['price']) ? $_GET['price'] : '0,00';
 <body>
     <nav class="navbar">
         <div class="logo">
-            <img src="images/vetlife_logo.png" alt="VetLife Logo">
-            VetLife
+            <img src="images/vetlife_logo.png" alt="Vida Pet Logo">
+            Vida Pet
         </div>
         <ul class="nav-links">
             <li><a href="index.php">Início</a></li>

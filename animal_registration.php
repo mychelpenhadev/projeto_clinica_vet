@@ -6,17 +6,35 @@ $isLoggedIn = isset($_SESSION['user_id']);
 $userName = $isLoggedIn ? $_SESSION['user_name'] : '';
 $plan = isset($_GET['plan']) ? $_GET['plan'] : 'Padrão';
 
-// Logic to define services based on Plan
+// Lógica para definir serviços baseados no Plano
 $services = [];
-if (strpos($plan, 'Básico') !== false) {
-    $services = ['Banho', 'Tosa Higiênica', 'Corte de Unhas'];
-} elseif (strpos($plan, 'Avançado') !== false) {
-    $services = ['Banho', 'Tosa Completa', 'Hidratação', 'Corte de Unhas', 'Limpeza de Ouvidos'];
-} elseif (strpos($plan, 'Clínica') !== false) {
-    $services = ['Consulta Geral', 'Vacinação', 'Exames Laboratoriais', 'Ultrassonografia', 'Cirurgia (Avaliação)', 'Internação'];
+if (strpos($plan, 'Amigo Fiel') !== false) {
+    $services = [
+        'Consultas Agendadas (Seg-Sex)', 
+        'Aplicação de Vacinas Nacionais', 
+        'Microchipagem Gratuita', 
+        'Suporte por WhatsApp'
+    ];
+} elseif (strpos($plan, 'Proteção Total') !== false) {
+    $services = [
+        'Pronto Socorro 24 Horas', 
+        'Exames de Sangue e Raio-X', 
+        'Castração (Cães e Gatos)', 
+        'Limpeza de Tártaro', 
+        'Vacinas Importadas'
+    ];
+} elseif (strpos($plan, 'VIP Pet') !== false) {
+    $services = [
+        'Médico Veterinário em Domicílio', 
+        'Cirurgias Complexas e Ortopedia', 
+        'Fisioterapia e Acupuntura', 
+        'Spa Day (Banho, Tosa e Hidratação)', 
+        'Hospedagem Premium', 
+        'Transporte Leva e Traz'
+    ];
 } else {
-    // Default fallback
-    $services = ['Banho', 'Tosa', 'Consulta'];
+    // Fallback padrão ou se o nome do plano não corresponder
+    $services = ['Consulta Geral', 'Banho', 'Tosa', 'Vacinação'];
 }
 ?>
 
@@ -25,7 +43,7 @@ if (strpos($plan, 'Básico') !== false) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agendamento - VetLife</title>
+    <title>Agendamento - Vida Pet</title>
     <link rel="stylesheet" href="css/modern.css">
     <style>
         .schedule-container {
@@ -50,8 +68,8 @@ if (strpos($plan, 'Básico') !== false) {
 <body>
     <nav class="navbar">
         <div class="logo">
-            <img src="images/vetlife_logo.png" alt="VetLife Logo">
-            VetLife
+            <img src="images/vetlife_logo.png" alt="Vida Pet Logo">
+            Vida Pet
         </div>
         <ul class="nav-links">
             <li><a href="index.php">Início</a></li>
@@ -68,8 +86,15 @@ if (strpos($plan, 'Básico') !== false) {
             <p>Agora vamos agendar o serviço para o seu pet (<?php echo htmlspecialchars($plan); ?>).</p>
         </div>
 
-        <form action="atendimento.php?new_schedule=1" method="POST">
+        <form action="atendimento.php?new_schedule=1" method="POST" enctype="multipart/form-data">
+            <input type="hidden" name="plan_name" value="<?php echo htmlspecialchars($plan); ?>">
             <h2 style="color: var(--primary-color); margin-bottom: 1.5rem;">Dados do Animal & Serviço</h2>
+            
+            <div class="form-group">
+                <label>Foto do Animal (Opcional)</label>
+                <input type="file" name="animal_photo" accept="image/png, image/jpeg" style="width: 100%; padding: 0.5rem; border: 1px solid #ddd; border-radius: var(--radius);">
+                <small style="color: #666; font-size: 0.8rem;">Preferência por imagens PNG ou JPG.</small>
+            </div>
             
             <div class="form-group">
                 <label>Nome do Animal</label>

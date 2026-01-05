@@ -1,7 +1,6 @@
 <?php
 session_start();
 require_once('config.php');
-// Check if user is logged in
 $isLoggedIn = isset($_SESSION['user_id']);
 $userName = $isLoggedIn ? $_SESSION['user_name'] : '';
 $userRole = $isLoggedIn ? $_SESSION['user_role'] : '';
@@ -12,14 +11,14 @@ $userRole = $isLoggedIn ? $_SESSION['user_role'] : '';
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Planos - VetLife</title>
+    <title>Planos - Vida Pet</title>
     <link rel="stylesheet" href="css/modern.css">
 </head>
 <body>
     <nav class="navbar">
         <div class="logo">
-            <img src="images/vetlife_logo.png" alt="VetLife Logo">
-            VetLife
+            <img src="images/vetlife_logo.png" alt="Vida Pet Logo">
+            Vida Pet
         </div>
         <ul class="nav-links">
             <li><a href="index.php">Início</a></li>
@@ -36,81 +35,74 @@ $userRole = $isLoggedIn ? $_SESSION['user_role'] : '';
     </nav>
 
     <div class="pricing-header">
-        <h1>Um sistema completo para sua empresa pet</h1>
-        <p>Escolha o plano que atende melhor a necessidade do seu negócio.</p>
+        <h1>Planos de Saúde Vida Pet</h1>
+        <p>Cuide de quem sempre está ao seu lado. Escolha a melhor proteção para o seu pet.</p>
     </div>
 
     <div class="pricing-container">
         <!-- Plano Básico -->
         <div class="pricing-card">
-            <h3>Pet Shop Básico</h3>
-            <p>Pensado para operações essenciais.</p>
-            <div class="price">R$ 157<span>/mês</span></div>
+            <h3>Amigo Fiel</h3>
+            <p>Prevenção básica e econômica.</p>
+            <div class="price"><small>R$</small> 89,90<span>/mês</span></div>
             <ul class="pricing-features">
-                <li>Controle de pacotes e kits</li>
-                <li>Agenda com recorrência</li>
-                <li>Ponto de venda (PDV)</li>
-                <li>Contas a pagar</li>
-                <li>Entrada e saída de estoque</li>
-                <li>Até 80 notas/mês (NFC-e/NFS-e)</li>
-                <li>Até 3 usuários</li>
+                <li>Consultas Agendadas (Seg-Sex)</li>
+                <li>Aplicação de Vacinas Nacionais</li>
+                <li>Microchipagem Gratuita</li>
+                <li>Suporte por WhatsApp</li>
             </ul>
-            <a href="checkout.php?plan=Pet Shop Básico&price=157" class="btn-plan">Experimentar</a>
+            <a href="checkout.php?plan=Amigo Fiel&price=89,90" class="btn-plan">Escolher este</a>
         </div>
 
         <!-- Plano Avançado -->
         <div class="pricing-card featured">
-            <h3>Pet Shop Avançado</h3>
-            <p>Para controle estratégico.</p>
-            <div class="price">R$ 220<span>/mês</span></div>
+            <h3>Proteção Total</h3>
+            <p>Segurança completa para a saúde.</p>
+            <div class="price"><small>R$</small> 149,90<span>/mês</span></div>
             <ul class="pricing-features">
-                <li>Tudo do Básico +</li>
-                <li>Emissão ilimitada de notas</li>
-                <li>Controle de comissões</li>
-                <li>Demonstrativo financeiro</li>
-                <li>Análise de consumo</li>
-                <li>Sugestão de compra</li>
-                <li>Fluxo de caixa</li>
-                <li>Até 5 usuários</li>
+                <li>Pronto Socorro 24 Horas</li>
+                <li>Exames de Sangue e Raio-X</li>
+                <li>Castração (Cães e Gatos)</li>
+                <li>Limpeza de Tártaro</li>
+                <li>Vacinas Importadas V10 e V8</li>
             </ul>
-            <a href="checkout.php?plan=Pet Shop Avançado&price=220" class="btn-plan">Experimentar</a>
+            <a href="checkout.php?plan=Proteção Total&price=149,90" class="btn-plan">Escolher este</a>
         </div>
 
         <!-- Plano Clínica -->
         <div class="pricing-card">
-            <h3>Clínica e Hospital</h3>
-            <p>Para clínicas e hospitais.</p>
-            <div class="price">R$ 359<span>/mês</span></div>
+            <h3>VIP Pet</h3>
+            <p>O máximo de luxo e conveniência.</p>
+            <div class="price"><small>R$</small> 299,90<span>/mês</span></div>
             <ul class="pricing-features">
-                <li>Prontuário veterinário</li>
-                <li>Controle de vacina</li>
-                <li>Análise de estoque</li>
-                <li>Controle de internação (add)</li>
-                <li>Vendas integradas</li>
-                <li>Fiscal ilimitado</li>
-                <li>A partir de 3 usuários</li>
+                <li>Médico Veterinário em Domicílio</li>
+                <li>Cirurgias Complexas e Ortopedia</li>
+                <li>Fisioterapia e Acupuntura</li>
+                <li>Spa Day (Banho, Tosa e Hidratação)</li>
+                <li>Hospedagem Premium (Semana Inteira)</li>
+                <li>Transporte Leva e Traz</li>
             </ul>
-            <a href="checkout.php?plan=Clínica e Hospital&price=359" class="btn-plan">Experimentar</a>
+            <a href="checkout.php?plan=VIP Pet&price=299,90" class="btn-plan">Escolher este</a>
         </div>
     </div>
 
     <section class="modules-section">
-        <h2 class="section-title">Módulos Adicionais</h2>
+        <h2 class="section-title">Serviços Adicionais</h2>
         <div class="modules-grid">
             <div class="module-card">
-                <h4>Módulo Fiscal (Clínica)</h4>
-                <p>Emita suas notas fiscais grandes (NF-e), notas de produtos (NFC-e) e notas de serviços (NFS-e) num só lugar.</p>
-                <p style="margin-top: 10px; font-weight: bold;">R$ 153,00/mês</p>
+                <h4>Microchipagem</h4>
+                <p>Identificação eletrônica permanente para seu pet, garantindo mais segurança em caso de perda.</p>
+                <p style="margin-top: 10px; font-weight: bold;">R$ 150,00 (único)</p>
             </div>
             <div class="module-card">
-                <h4>Módulo Internação</h4>
-                <p>Acompanhe os animais internados de qualquer lugar e confira horários de prescrições.</p>
-                <p style="margin-top: 10px; font-weight: bold;">R$ 136,00/mês</p>
+                <h4>Odontologia Preventiva</h4>
+                <p>Limpeza de tártaro e polimento para manter a saúde bucal do seu amigo em dia.</p>
+                <p style="margin-top: 10px; font-weight: bold;">R$ 250,00/sessão</p>
             </div>
             <div class="module-card">
-                <h4>Mensagens Automáticas</h4>
-                <p>Avisos por WhatsApp, SMS e E-mail sobre agendamentos e aniversários.</p>
-                <p style="margin-top: 10px; font-weight: bold;">R$ 0,50/WhatsApp</p>
+                <h4>Taxi Dog</h4>
+                <p>Buscamos e levamos seu pet para banho, tosa ou consultas com total segurança e conforto.</p>
+                <p style="margin-top: 10px; font-weight: bold;">Consulte valores</p>
             </div>
         </div>
     </section>
@@ -121,7 +113,7 @@ $userRole = $isLoggedIn ? $_SESSION['user_role'] : '';
     </a>
 
     <footer>
-        <p>&copy; 2026 VetLife Clínica Veterinária. Todos os direitos reservados.</p>
+        <p>&copy; 2026 Vida Pet Clínica Veterinária. Todos os direitos reservados.</p>
     </footer>
 </body>
 </html>

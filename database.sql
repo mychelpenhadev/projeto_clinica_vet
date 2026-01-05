@@ -14,9 +14,12 @@ create table animal
     cd_animal int,
     nm_animal varchar(100),
     cd_especie int,
+    id_user int,
     constraint pk_animal primary key (cd_animal),
     constraint fk_animal_especie foreign key (cd_especie)
-    	references especie(cd_especie)
+    	references especie(cd_especie),
+    constraint fk_animal_user foreign key (id_user)
+        references users(id_user)
 );
 
 create table tratamento

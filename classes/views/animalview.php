@@ -7,16 +7,31 @@ class AnimalView {
         $animalController = new AnimalController();
         $listaTodosAnimais = $animalController->Listar();
 
+        $userId = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null;
+        $userRole = isset($_SESSION['user_role']) ? $_SESSION['user_role'] : '';
+        $isAdminOrVet = ($userRole === 'admin' || $userRole === 'Veterinário');
+
         for($i=0; $i < count($listaTodosAnimais) ; $i++) {
-            echo "<div class='caixaAnimal'>
-                        <a href='atendimento.php'>
-                            <img src='images/{$listaTodosAnimais[$i]->Nome}.png'>
-                            <div>
-                                <h1>{$listaTodosAnimais[$i]->Nome}</h1>
-                                <p>{$listaTodosAnimais[$i]->Especie->Nome}</p>
-                            </div>
-                        </a>
-                    </div>";
+            $isOwner = ($listaTodosAnimais[$i]->IdUser == $userId);
+            $canAccess = ($isOwner || $isAdminOrVet);
+
+            echo "<div class='caixaAnimal'>";
+            
+            if ($canAccess) {
+                echo "<a href='atendimento.php?id={$listaTodosAnimais[$i]->Codigo}'>";
+            }
+
+            echo "   <img src='images/{$listaTodosAnimais[$i]->Nome}.png'>
+                     <div>
+                         <h1>{$listaTodosAnimais[$i]->Nome}</h1>
+                         <p>{$listaTodosAnimais[$i]->Especie->Nome}</p>
+                     </div>";
+
+            if ($canAccess) {
+                echo "</a>";
+            }
+            
+            echo "</div>";
         }
     }
 
@@ -30,16 +45,31 @@ class AnimalView {
         }
         else
         {
+            $userId = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null;
+            $userRole = isset($_SESSION['user_role']) ? $_SESSION['user_role'] : '';
+            $isAdminOrVet = ($userRole === 'admin' || $userRole === 'Veterinário');
+
             for($i=0; $i < count($listaAnimaisComEsteNome) ; $i++) {
-                echo "<div class='caixaAnimal'>
-                            <a href='atendimento.php'>
-                                <img src='images/{$listaAnimaisComEsteNome[$i]->Nome}.png'>
-                                <div>
-                                    <h1>{$listaAnimaisComEsteNome[$i]->Nome}</h1>
-                                    <p>{$listaAnimaisComEsteNome[$i]->Especie->Nome}</p>
-                                </div>
-                            </a>
-                        </div>";
+                $isOwner = ($listaAnimaisComEsteNome[$i]->IdUser == $userId);
+                $canAccess = ($isOwner || $isAdminOrVet);
+
+                echo "<div class='caixaAnimal'>";
+                
+                if ($canAccess) {
+                    echo "<a href='atendimento.php?id={$listaAnimaisComEsteNome[$i]->Codigo}'>";
+                }
+
+                echo "    <img src='images/{$listaAnimaisComEsteNome[$i]->Nome}.png'>
+                          <div>
+                              <h1>{$listaAnimaisComEsteNome[$i]->Nome}</h1>
+                              <p>{$listaAnimaisComEsteNome[$i]->Especie->Nome}</p>
+                          </div>";
+
+                if ($canAccess) {
+                    echo "</a>";
+                }
+
+                echo "</div>";
             }
         }
     }
